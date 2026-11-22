@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Car Barometer</title>
+<meta name="description" content="Compare inspection defect rates of 253 car models (GOCA Vlaanderen barometer 2025–2026).">
+<link rel="stylesheet" href="css/app.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='7' fill='%232a78d6'/><path d='M7 20h18l-2-6c-.4-1.2-1.4-2-2.6-2h-8.8c-1.2 0-2.2.8-2.6 2z' fill='white'/><circle cx='11' cy='21.5' r='2.3' fill='white'/><circle cx='21' cy='21.5' r='2.3' fill='white'/></svg>">
+<script>
+  // Apply the stored theme before first paint.
+  try { var t = localStorage.getItem("cb-theme"); if (t) document.documentElement.dataset.theme = t; } catch (e) {}
+</script>
+<!-- Classic scripts (not ES modules) so the page also works when opened from file:// -->
+<script src="vendor/echarts.min.js" defer></script>
+<script src="data/barometer.js" defer></script>
+<script src="app.bundle.js" defer></script>
+</head>
+<body>
+<header class="top">
+  <div class="top-inner">
+    <a class="brand" href="#/ranking" data-i18n-title="nav.home">
+      <svg viewBox="0 0 32 32" width="28" height="28" aria-hidden="true"><rect width="32" height="32" rx="7" fill="var(--series-1)"/><path d="M7 20h18l-2-6c-.4-1.2-1.4-2-2.6-2h-8.8c-1.2 0-2.2.8-2.6 2z" fill="#fff"/><circle cx="11" cy="21.5" r="2.3" fill="#fff"/><circle cx="21" cy="21.5" r="2.3" fill="#fff"/></svg>
+      <span data-i18n="app.title">Car Barometer</span>
+    </a>
+    <nav class="tabs" id="tabs" aria-label="Main">
+      <a href="#/ranking" data-view="ranking" data-i18n="nav.ranking">Ranking</a>
+      <a href="#/compare" data-view="compare" data-i18n="nav.compare">Compare</a>
+      <a href="#/brands" data-view="brands" data-i18n="nav.brands">Brands</a>
+      <a href="#/defects" data-view="defects" data-i18n="nav.defects">Defects</a>
+      <a href="#/explore" data-view="explore" data-i18n="nav.explore">Explore</a>
+      <a href="#/about" data-view="about" data-i18n="nav.about">About</a>
+    </nav>
+    <div class="top-tools">
+      <label class="sr-only" for="lang" data-i18n="ui.language">Language</label>
+      <select id="lang" class="compact">
+        <option value="en">EN</option><option value="fr">FR</option><option value="nl">NL</option><option value="de">DE</option><option value="pl">PL</option>
+      </select>
+      <button id="theme" class="icon-btn" type="button" data-i18n-title="ui.theme" aria-label="Theme">
+        <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path fill="currentColor" d="M12 3a9 9 0 1 0 9 9c0-.5 0-1-.1-1.4A5.5 5.5 0 0 1 13.4 3.1 9 9 0 0 0 12 3z"/></svg>
+      </button>
+      <button id="share" class="btn" type="button"><span data-i18n="ui.copyLink">Copy link</span></button>
+    </div>
+  </div>
+</header>
+<main id="app" class="wrap" aria-live="polite">
+  <p class="loading" data-i18n="ui.loading">Loading…</p>
+</main>
+<footer class="foot wrap">
+  <span data-i18n="foot.source">Data</span>: <a id="src-link" href="https://gocabarometer.gocavlaanderen.be/" target="_blank" rel="noopener">GOCA Barometer</a>
+  · <span id="foot-meta"></span>
+  · <span data-i18n="foot.unofficial">Unofficial visualisation, not affiliated with GOCA Vlaanderen.</span>
+</footer>
+<div id="toast" class="toast" role="status" hidden></div>
+</body>
+</html>
