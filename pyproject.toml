@@ -1,0 +1,25 @@
+[project]
+name = "carbarometer"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.14"
+dependencies = [
+    "httpx2>=2.16.2",
+    "selectolax>=1.0.2",
+]
+
+[project.scripts]
+carbarometer = "carbarometer:main"
+carbarometer-build = "carbarometer.build_site:main"
+carbarometer-deploy = "carbarometer.deploy:main"
+
+[build-system]
+requires = ["uv_build>=0.12.23,<0.13.0"]
+build-backend = "uv_build"
+
+[dependency-groups]
+dev = [
+    "ghp-import>=2.1.0",
+    "playwright>=1.65.2",
+]
